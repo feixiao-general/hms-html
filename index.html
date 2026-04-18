@@ -12,7 +12,7 @@
 <h2>绘梦社</h2>
 
 <h1>BA</h1>
-<video width="640" height="360" controls autoplay muted>
+<video width="640" height="360" controls>
     <source src="ba.mp4" type="video/mp4">
 </video>
 
@@ -30,11 +30,18 @@
 <div id="notice">加载中...</div>
 
 <script>
-fetch('notice.txt')
-  .then(res => res.text())
-  .then(text => {
-    document.getElementById('notice').innerText = text
+fetch('notice.txt?v=' + new Date().getTime())
+  .then(res => {
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    return res.text();
   })
+  .then(text => {
+    document.getElementById('notice').innerText = text;
+  })
+  .catch(err => {
+    document.getElementById('notice').innerText = '加载失败：' + err.message;
+    console.error('公告加载错误:', err);
+  });
 </script>
 
 </body>
