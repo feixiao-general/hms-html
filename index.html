@@ -1,0 +1,40 @@
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">    
+    <title>绘梦社</title>
+</head>
+
+<body>
+
+<h1>HMS</h1>
+<h2>绘梦社</h2>
+
+<h1>BA</h1>
+<video width="640" height="360" controls>
+    <source src="ba.mp4" type="video/mp4">
+</video>
+
+<h1>绘梦之人</h1>
+<ul>
+  <li>社长:谢依婷</li>
+  <li>副社长:林一淼</li>
+  <li>纪律委员:刘淑琳</li>
+  <li>宣传委员:zhy</li>
+  <li>技术委员:zhy</li>
+  <li>成员太多了，懒得去写</li>
+</ul>
+
+<h1>公告</h1>
+<div id="notice">加载中...</div>
+
+<script>
+fetch('notice.txt')
+  .then(res => res.text())
+  .then(text => {
+    document.getElementById('notice').innerText = text
+  })
+
+</body>
+
+</html>
