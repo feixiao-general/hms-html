@@ -26,22 +26,17 @@
   <li>成员太多了，懒得去写</li>
 </ul>
 
+<a href="zhy.html">站长的网页</a>
+
 <h1>公告</h1>
 <div id="notice">加载中...</div>
 
 <script>
-fetch('notice.txt?v=' + new Date().getTime())
-  .then(res => {
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    return res.text();
-  })
+fetch('notice.txt')
+  .then(res => res.text())
   .then(text => {
-    document.getElementById('notice').innerText = text;
+    document.getElementById('notice').innerText = text
   })
-  .catch(err => {
-    document.getElementById('notice').innerText = '加载失败：' + err.message;
-    console.error('公告加载错误:', err);
-  });
 </script>
 
 </body>
